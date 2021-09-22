@@ -1,18 +1,14 @@
 from telethon import TelegramClient, events, sync
 
-import requests
-from bs4 import BeautifulSoup
 
 # Use your own values from my.telegram.org
-api_id = 1411433
-api_hash = '1c42c133b5e0a9e9978797ab86ce0858'
 bot_token = '1199435543:AAGbAM-KhMhxHSYw08uhQPXVOIQqe33-Dvo'
 
 bot = TelegramClient('bot', api_id, api_hash).start(bot_token=bot_token)
 
 
 @bot.on(events.NewMessage(pattern='/all'))
-async def start(event):
+async def call_all(event):
     """Send a message when the command /start is issued."""
     chat = event.chat
     # get all the users and print them
@@ -37,6 +33,10 @@ async def start(event):
         message = ''
         num = 0
 
+
+@bot.on(events.NewMessage(pattern='/all'))
+async def update_base(event):
+    pass
 
 with bot:
     bot.run_until_disconnected()
