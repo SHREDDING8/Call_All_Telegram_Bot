@@ -1,10 +1,7 @@
 from telethon import TelegramClient, events, sync
+from config import *
 
-
-# Use your own values from my.telegram.org
-bot_token = '1199435543:AAGbAM-KhMhxHSYw08uhQPXVOIQqe33-Dvo'
-
-bot = TelegramClient('bot', api_id, api_hash).start(bot_token=bot_token)
+bot = TelegramClient('bot', API_ID, API_HASH).start(bot_token=BOT_TOKEN)
 
 
 @bot.on(events.NewMessage(pattern='/all'))
@@ -33,10 +30,6 @@ async def call_all(event):
         message = ''
         num = 0
 
-
-@bot.on(events.NewMessage(pattern='/all'))
-async def update_base(event):
-    pass
 
 with bot:
     bot.run_until_disconnected()
